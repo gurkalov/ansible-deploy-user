@@ -1,0 +1,5 @@
+---
+- name: Create deploy user on all hosts.
+  hosts: all
+  roles:
+    - {role: gurkalov.deploy-user}

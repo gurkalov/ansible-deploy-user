@@ -1,0 +1,18 @@
+---
+# defaults file for gurkalov.deploy-user
+
+# Private key
+private_key: ""
+
+# Public key
+public_key: ""
+
+# Private key path
+private_key_path: "{{ role_path }}/files/id_rsa"
+
+# Public key path
+public_key_path: "{{ private_key_path }}.pub"
+
+# List of public key files for user's .ssh/authorized_keys
+public_keys:
+  - "{{ public_key_path }}"

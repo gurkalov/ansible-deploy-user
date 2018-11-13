@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: deploy_user
   author: Gurkalov Dmitry
   description: Create a deploy user with SSH key and sudo.
   company: Gurkalov

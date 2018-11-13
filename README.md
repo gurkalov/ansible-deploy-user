@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/gurkalov/ansible-deploy-user.svg?branch=master)](https://travis-ci.org/gurkalov/ansible-deploy-user)
+[![Ansible Galaxy](https://img.shields.io/ansible/role/32604.svg)](https://galaxy.ansible.com/gurkalov/deploy_user)
+
 
 Deploy User
 =========

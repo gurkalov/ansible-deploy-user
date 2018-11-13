@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gurkalov/ansible-deploy-user.svg?branch=master)](https://travis-ci.org/gurkalov/ansible-deploy-user)
+
 Deploy User
 =========
 

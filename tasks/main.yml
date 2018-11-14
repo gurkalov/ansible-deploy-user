@@ -1,10 +1,5 @@
 ---
 # tasks file for gurkalov.deploy-user
-- name: Check for private key
-  local_action: stat path={{ private_key_path }}
-  run_once: true
-  register: stat_private_key
-
 - name: Create private key (copy)
   local_action: copy content={{ private_key }} dest={{ private_key_path }}
   run_once: true
@@ -14,6 +9,11 @@
   local_action: copy content={{ public_key }} dest={{ public_key_path }}
   run_once: true
   when: private_key != ""
+
+- name: Check for private key
+  local_action: stat path={{ private_key_path }}
+  run_once: true
+  register: stat_private_key
 
 - name: Create private key (generate)
   local_action: command ssh-keygen -b 2048 -t rsa -f {{ private_key_path }} -q -N ""

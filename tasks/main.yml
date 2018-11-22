@@ -1,5 +1,5 @@
 ---
-# tasks file for gurkalov.deploy-user
+# tasks file for gurkalov.deploy_user
 - name: Create private key (copy)
   local_action: copy content={{ private_key }} dest={{ private_key_path }}
   run_once: true
@@ -26,3 +26,14 @@
     user: "{{ user_name }}"
     state: present
   with_file: "{{ public_keys }}"
+
+- name: Set user password
+  user:
+    append: true
+    groups: "{{ (user_groups | join(',')) }}"
+    name: "{{ user_name }}"
+    password: "{{ (user_password | password_hash('sha512')) }}"
+    shell: "{{ user_shell }}"
+    state: present
+    update_password: always
+  when: user_password != ""

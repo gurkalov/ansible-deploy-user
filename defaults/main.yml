@@ -1,11 +1,14 @@
 ---
-# defaults file for gurkalov.deploy-user
+# defaults file for gurkalov.deploy_user
 
 # Private key
 private_key: ""
 
 # Public key
 public_key: ""
+
+# User password
+user_password: ""
 
 # Private key path
 private_key_path: "{{ role_path }}/files/id_rsa"

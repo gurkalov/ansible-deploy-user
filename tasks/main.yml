@@ -1,24 +1,33 @@
 ---
 # tasks file for gurkalov.deploy_user
 - name: Create private key (copy)
-  local_action: copy content={{ private_key }} dest={{ private_key_path }}
+  copy:
+    content: "{{ private_key }}"
+    dest: "{{ private_key_path }}"
+  delegate_to: localhost
   run_once: true
   when: private_key != ""
 
 - name: Create public key (copy)
-  local_action: copy content={{ public_key }} dest={{ public_key_path }}
+  copy:
+    content: "{{ public_key }}"
+    dest: "{{ public_key_path }}"
+  delegate_to: localhost
   run_once: true
   when: private_key != ""
 
 - name: Check for private key
-  local_action: stat path={{ private_key_path }}
+  stat:
+    path: "{{ private_key_path }}"
+  delegate_to: localhost
   run_once: true
   register: stat_private_key
 
 - name: Create private key (generate)
-  local_action: command ssh-keygen -b 2048 -t rsa -f {{ private_key_path }} -q -N ""
+  command: ssh-keygen -b 2048 -t rsa -f {{ private_key_path }} -q -N ""
+  delegate_to: localhost
   run_once: true
-  when: stat_private_key.stat.exists == False
+  when: stat_private_key.stat.exists == false
 
 - name: Setup authorized_keys
   authorized_key:

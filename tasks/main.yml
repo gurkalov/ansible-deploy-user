@@ -46,3 +46,9 @@
     state: present
     update_password: always
   when: user_password | length > 0
+
+- name: Disable passwordless sudo
+  file:
+    path: "/etc/sudoers.d/{{ user_name }}"
+    state: absent
+  when: not enable_passwordless_sudo

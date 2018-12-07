@@ -1,11 +1,17 @@
 ---
 # defaults file for gurkalov.deploy_user
 
+# Enable passwordless sudo
+enable_passwordless_sudo: false
+
 # Private key
 private_key: ""
 
 # Public key
 public_key: ""
+
+# User name
+user_name: deploy
 
 # User password
 user_password: ""
